@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies/features/home/data/repos/trending_week_movie_imp.dart';
 import 'package:movies/features/home/data/repos/trending_day_movie_imp.dart';
-import 'package:movies/features/home/presentation/views/widgets/custom_drop_down_button.dart';
 
 class SliverAppBarSection extends StatefulWidget {
   const SliverAppBarSection({Key? key});
@@ -68,7 +67,7 @@ class _SliverAppBarSectionState extends State<SliverAppBarSection> {
                             },
                           );
                         }).toList()
-                      : trendingday.map((trendingWeek) {
+                      : trendingday.map((trendingday) {
                           return Builder(
                             builder: (context) {
                               return GestureDetector(
@@ -82,7 +81,7 @@ class _SliverAppBarSectionState extends State<SliverAppBarSection> {
                                     child: CachedNetworkImage(
                                       fit: BoxFit.cover,
                                       imageUrl:
-                                          "https://image.tmdb.org/t/p/w500${trendingWeek['poster_path']}",
+                                          "https://image.tmdb.org/t/p/w500${trendingday['poster_path']}",
                                       placeholder: (context, url) => Center(
                                         child: CircularProgressIndicator(
                                           color: Colors.amber,
@@ -112,7 +111,54 @@ class _SliverAppBarSectionState extends State<SliverAppBarSection> {
           style:
               TextStyle(fontSize: 25.sp, color: Colors.white.withOpacity(0.8)),
         ),
-        CustomDropDownButton(uval: uval)
+        Container(
+          height: 50.h,
+          decoration: BoxDecoration(
+            // color: Colors.black87,
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 8.0.h, horizontal: 8.0.w),
+              child: DropdownButton(
+                onChanged: (value) {
+                  setState(() {
+                    trendingweek.clear();
+                    trendingday.clear();
+                    uval = int.parse(value.toString()); // Update dropdown value
+                  });
+                },
+                value: uval,
+                icon: Icon(
+                  Icons.arrow_drop_down_sharp,
+                  color: Colors.amber,
+                  size: 30.sp,
+                ),
+                items: [
+                  DropdownMenuItem(
+                    child: Text(
+                      "Weekly",
+                      style: TextStyle(
+                        color: Colors.white,
+                        decoration: TextDecoration.none,
+                        fontSize: 18.sp,
+                      ),
+                    ),
+                    value: 1,
+                  ),
+                  DropdownMenuItem(
+                    child: Text(
+                      "Daily",
+                      style: TextStyle(
+                        color: Colors.white,
+                        decoration: TextDecoration.none,
+                        fontSize: 18.sp,
+                      ),
+                    ),
+                    value: 2,
+                  )
+                ],
+              )),
+        ),
       ]),
     );
   }
