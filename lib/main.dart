@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movies/app_routes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movies/core/utils/app_routes.dart';
 
 void main(List<String> args) {
   runApp(MovieApp());
@@ -16,6 +16,7 @@ class MovieApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) => MaterialApp.router(
+        theme: ThemeData.dark(),
         routerConfig: AppRouter.router,
         debugShowCheckedModeBanner: false,
       ),
