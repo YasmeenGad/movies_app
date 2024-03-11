@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies/features/home/data/repos/app_movies_imp.dart';
+import 'package:movies/features/home/data/repos/trending_week_movies_imp.dart';
 
 class SliverAppBarSection extends StatelessWidget {
   const SliverAppBarSection({super.key});
@@ -17,7 +17,7 @@ class SliverAppBarSection extends StatelessWidget {
       flexibleSpace: FlexibleSpaceBar(
         collapseMode: CollapseMode.parallax,
         background: FutureBuilder(
-          future: AppMovies.fetchTrendingWeekMovies(),
+          future: TrendingWeekMovie.fetchTrendingWeekMovies(),
           builder: (BuildContext context, AsyncSnapshot<void> snapshot) {
             if (snapshot.connectionState == ConnectionState.done) {
               return CarouselSlider(

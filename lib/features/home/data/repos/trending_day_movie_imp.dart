@@ -4,9 +4,9 @@ import 'package:movies/core/utils/constants.dart';
 
 List<Map<String, dynamic>> trendingweek = [];
 
-class AppMovies {
+class TrendingDayMovie {
   static Future<void> fetchTrendingWeekMovies() async {
-    var trendingWeekResponse = await http.get(Uri.parse(trendingweekurl));
+    var trendingWeekResponse = await http.get(Uri.parse(trendingdayurl));
     if (trendingWeekResponse.statusCode == 200) {
       var data = jsonDecode(trendingWeekResponse.body);
       var trendingweekjson = data['results'];
