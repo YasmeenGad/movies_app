@@ -6,7 +6,7 @@ List<Map<String, dynamic>> trendingweek = [];
 
 class TrendingWeekMovie {
   static Future<void> fetchTrendingWeekMovies() async {
-    var trendingWeekResponse = await http.get(Uri.parse(trendingweekurl));
+    var trendingWeekResponse = await http.get(Uri.parse(kTrendingweekurl));
     if (trendingWeekResponse.statusCode == 200) {
       var data = jsonDecode(trendingWeekResponse.body);
       var trendingweekjson = data['results'];
