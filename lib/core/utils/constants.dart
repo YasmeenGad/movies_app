@@ -6,3 +6,4 @@ var kTrendingdayurl =
 var kTopRatedMovies =
     'https://api.themoviedb.org/3/tv/top_rated?api_key=$apikey';
 var kPopularMovies = 'https://api.themoviedb.org/3/tv/popular?api_key=$apikey';
+var kOnAirTv = 'https://api.themoviedb.org/3/tv/on_the_air?api_key=$apikey';
