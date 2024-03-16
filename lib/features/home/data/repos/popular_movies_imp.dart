@@ -6,17 +6,17 @@ List<Map<String, dynamic>> popularMovies = [];
 
 class PopularMovie {
   static Future<void> fetchPopularMovies() async {
-    var response = await http.get(Uri.parse(kPopularMovies));
-    if (response.statusCode == 200) {
-      var data = jsonDecode(response.body);
-      var popularData = data['results'];
-      for (int i = 0; i < popularData.lenght; i++) {
+    var populartvresponse = await http.get(Uri.parse(kPopularMovies));
+    if (populartvresponse.statusCode == 200) {
+      var data = jsonDecode(populartvresponse.body);
+      var populartvjson = data['results'];
+      for (var i = 0; i < populartvjson.length; i++) {
         popularMovies.add({
-          "name": popularData[i]["name"],
-          "poster_path": popularData[i]["poster_path"],
-          "vote_average": popularData[i]["vote_average"],
-          "Date": popularData[i]["first_air_date"],
-          "id": popularData[i]["id"],
+          "name": populartvjson[i]["name"],
+          "poster_path": populartvjson[i]["poster_path"],
+          "vote_average": populartvjson[i]["vote_average"],
+          "Date": populartvjson[i]["first_air_date"],
+          "id": populartvjson[i]["id"],
         });
       }
     }

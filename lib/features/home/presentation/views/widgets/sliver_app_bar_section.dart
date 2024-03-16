@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movies/core/widgets/circular_indicator.dart';
 import 'package:movies/features/home/data/repos/trending_week_movie_imp.dart';
 import 'package:movies/features/home/data/repos/trending_day_movie_imp.dart';
 
@@ -97,11 +98,7 @@ class _SliverAppBarSectionState extends State<SliverAppBarSection> {
                           );
                         }).toList());
             }
-            return Center(
-              child: CircularProgressIndicator(
-                color: Colors.amber,
-              ),
-            );
+            return CustomCircularIndicator();
           },
         ),
       ),
