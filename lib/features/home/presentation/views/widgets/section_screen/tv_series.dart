@@ -18,9 +18,9 @@ class TVseries extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             CustomMoviesListView(
-                movies: popularTvSeries, categoryTitle: "Popular"),
+                movies: popularTvSeries, categoryTitle: "Popular Tv Series"),
             CustomMoviesListView(
-                movies: topRatedTvSeries, categoryTitle: "Top Rated"),
+                movies: topRatedTvSeries, categoryTitle: "Top Rated Tv Series"),
             CustomMoviesListView(
                 movies: onAirTvSeries, categoryTitle: "On Air Tv Series")
           ],
