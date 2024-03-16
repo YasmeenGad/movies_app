@@ -56,7 +56,7 @@ class _SectionSliverListState extends State<SectionSliverList>
             ),
           ),
           Container(
-            height: MediaQuery.of(context).size.height,
+            height: MediaQuery.of(context).size.height * 1.16,
             child: TabBarView(controller: tabController, children: [
               TVseries(),
               Movies(),
