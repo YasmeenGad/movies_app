@@ -19,40 +19,76 @@ class TVseries extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.only(left: 10.w, top: 15.h, bottom: 40.h),
-              child: Container(
-                height: 200.h,
-                child: ListView.builder(
-                  physics: BouncingScrollPhysics(),
-                  scrollDirection: Axis.horizontal,
-                  itemCount: popularMovies.length,
-                  itemBuilder: (context, index) {
-                    return GestureDetector(
-                      onTap: () {},
-                      child: Container(
-                        margin: EdgeInsets.only(left: 13.w),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(16),
-                          child: CachedNetworkImage(
-                            fit: BoxFit.cover,
-                            imageUrl:
-                                "https://image.tmdb.org/t/p/w500${popularMovies[index]['poster_path']}",
-                            placeholder: (context, url) => Center(
-                              child: CircularProgressIndicator(
-                                color: Colors.amber,
-                              ),
-                            ),
-                            errorWidget: (context, url, error) =>
-                                Icon(Icons.error),
-                          ),
-                        ),
+                padding: EdgeInsets.only(left: 12.w, top: 20.h, bottom: 20.h),
+                child: Text(
+                  "Popular Movies",
+                  style: TextStyle(fontSize: 18.sp, color: Colors.amber),
+                )),
+            Container(
+              height: 200.h,
+              child: ListView.builder(
+                physics: BouncingScrollPhysics(),
+                scrollDirection: Axis.horizontal,
+                itemCount: popularMovies.length,
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      margin: EdgeInsets.only(left: 13.w),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
                       ),
-                    );
-                  },
-                ),
+                      child: Stack(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(16),
+                            child: CachedNetworkImage(
+                              fit: BoxFit.cover,
+                              imageUrl:
+                                  "https://image.tmdb.org/t/p/w500${popularMovies[index]['poster_path']}",
+                              placeholder: (context, url) => Center(
+                                child: CircularProgressIndicator(
+                                  color: Colors.amber,
+                                ),
+                              ),
+                              errorWidget: (context, url, error) =>
+                                  Icon(Icons.error),
+                            ),
+                          ),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(top: 5, left: 6),
+                                child: Text("${popularMovies[index]["Date"]}"),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 5, left: 6),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(5),
+                                    color: Colors.black.withOpacity(0.5),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 5, horizontal: 2),
+                                    child: Row(children: [
+                                      Icon(Icons.star,
+                                          color: Colors.yellow, size: 15.sp),
+                                      Text(
+                                          "${popularMovies[index]['vote_average'].toString()}"),
+                                    ]),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
               ),
             ),
           ],
