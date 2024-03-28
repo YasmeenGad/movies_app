@@ -18,7 +18,6 @@ class _SearchViewState extends State<SearchView> {
   final TextEditingController searchtext = TextEditingController();
   bool showlist = false;
   var val1;
-  ////////////////////////////////search bar function/////////////////////////////////////////////
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
