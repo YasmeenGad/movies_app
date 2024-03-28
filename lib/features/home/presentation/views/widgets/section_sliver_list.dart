@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies/features/home/presentation/views/widgets/section_screen/movies.dart';
 import 'package:movies/features/home/presentation/views/widgets/section_screen/tv_series.dart';
 import 'package:movies/features/home/presentation/views/widgets/section_screen/upcoming.dart';
+import 'package:movies/features/search/presentation/views/search_view.dart';
 
 class SectionSliverList extends StatefulWidget {
   const SectionSliverList({super.key});
@@ -19,7 +20,7 @@ class _SectionSliverListState extends State<SectionSliverList>
     return SliverList(
       delegate: SliverChildListDelegate(
         [
-          Center(child: Text("Text")),
+          SearchView(),
           Container(
             height: 50.h,
             width: MediaQuery.of(context).size.width,
